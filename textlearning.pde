@@ -14,7 +14,12 @@ String msg = "";
 MessageArea messageArea = new MessageArea();
 
 void setup(){
-  sysprint("Hello world");
+  sysprint("Note:");
+  sysprint("In the online version of the demo");
+  sysprint("backspace doesnt work because it");
+  sysprint("is intercepted by the browser.");
+  sysprint("The final solution would have a working")
+  sysprint("backspace function.");
   //size(1280,720);
   //surface.setResizable(true);
   //size(400,400);
@@ -161,15 +166,15 @@ class TextLine {
       fill(200);
       rect(x,y,textWidth(substr(txt,maxchar))+xpadding,bheight,cradius);
       fill(0);
-      text(substr(txt,maxchar),x+xpadding/2,y-3,textWidth(substr(txt,maxchar))+xpadding,bheight);
+      text(substr(txt,maxchar),x+xpadding/2,y-5,textWidth(substr(txt,maxchar))+xpadding,bheight);
       textAlign(LEFT);
     }else if(type==1){
       textAlign(LEFT,CENTER);
       noStroke();
       fill(#4286f4);
-      rect(parent.x+parent.w-10,y,w,bheight,cradius);
+      rect(parent.x+parent.w-10+w,y,-w,bheight,cradius);
       fill(255);
-      text(substr(txt,maxchar),parent.x+parent.w-10+w+xpadding/2,y-3,-w,bheight);
+      text(substr(txt,maxchar),parent.x+parent.w-10+w+xpadding/2,y-5,-w,bheight);
 
       noFill();
       strokeWeight(4);
@@ -211,6 +216,7 @@ void keyPressed(){
       bprint(msg,1);
       msg="";
     }
+    println(key);
 
   }catch(Exception e){
     userprint(e.getMessage());
