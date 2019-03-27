@@ -41,7 +41,14 @@ void draw(){
   }
 
   fill(255);
-  text(frameRate,20,20)
+  text(frameRate,20,20);
+  if(mousePressed&&mouseX<400){
+    if(mouseY>height/2){
+      msg+=str(char(int(random(16,128))));
+    }else{
+      sendBackspace();
+    }
+  }
 }
 
 float ease(float x, int tx, float e){
