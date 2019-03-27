@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="">
   <head>
+    <script type="text/javascript" src="jquery-1.7.min.js"></script>
     <style> body{padding:0; margin:0;} </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,59 @@
     <style> body {padding: 0; margin: 0;, overflow:hidden;} canvas {display: block;} </style>
     <script type="text/javascript" src="processing.js"></script>
     <script type="text/javascript" src="keytrap.js"></script>
+    <script type="text/javascript"></script>
+
   </head>
   <body>
     <canvas id="canvas" data-processing-sources="textlearning.pde"></canvas>
+    <!--<button onclick="startSketch();">Start</button>
+    <button onclick="stopSketch();">Stop</button>-->
+    <script type="text/javascript">
+    var processingInstance;
+    //startSketch();
+    function defineProcessing(){
+
+    //if (!processingInstance) {
+          processingInstance = Processing.getInstanceById('canvas');
+      //}
+    }
+
+
+
+
+    function startSketch() {
+        switchSketchState(true);
+    }
+    function stopSketch() {
+        switchSketchState(false);
+    }
+    function switchSketchState(on) {
+     if (!processingInstance) {
+         processingInstance = Processing.getInstanceById('canvas');
+     }
+     if (on) {
+         processingInstance.loop();  // call Processing loop() function
+     } else {
+         processingInstance.noLoop(); // stop animation, call noLoop()
+     }
+
+
+
+     }
+     //startSketch();
+     function blockHandler(element, key) {
+       var trap = "key '"+key+"' got trapped in element with id '"+element.id+"'\n";
+       //document.getElementById('canvas').innerHTML += trap;
+       console.log(trap);
+       //var pinstance = Processing.instances[0];
+       defineProcessing();
+       processingInstance.sendBackspace();
+
+     }
+
+
+      var keys = [37,38,39,40,8];  // standard cursor set
+      $('canvas').trap(keys, blockHandler);
+    </script>
   </body>
 </html>

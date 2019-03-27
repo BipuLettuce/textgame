@@ -102,5 +102,3 @@ if (typeof jQuery !== 'undefined') {
     });
   };
 }
-
-KeyTrap.trap(document.getElementById("canvas"), [8]);

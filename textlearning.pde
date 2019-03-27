@@ -40,6 +40,8 @@ void draw(){
     sysprint(""+millis());
   }
 
+  fill(255);
+  text(frameRate,20,20)
 }
 
 float ease(float x, int tx, float e){
@@ -106,7 +108,7 @@ class TextLine {
   int bheight = 48;
   int cradius = 24;
 
-  float animspeed = 0.2;
+  float animspeed = 0.5;
 
   int maxchar = 75;
 
@@ -216,7 +218,7 @@ void keyPressed(){
       bprint(msg,1);
       msg="";
     }
-    println(key);
+    //println(key+", ");
 
   }catch(Exception e){
     userprint(e.getMessage());
@@ -227,4 +229,11 @@ interface externals {
   interface window {
     int innerWidth = 800, innerHeight = 600;
   }
+}
+
+
+void sendBackspace(){
+
+  msg=msg.substring(0,msg.length()-1);
+  //println("Backspace detected");
 }
