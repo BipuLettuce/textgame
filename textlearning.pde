@@ -10,7 +10,7 @@ void settings() {
 }
 
 String msg = "";
-int sidebarw = 400;
+int sidebarw = 200;
 
 MessageArea messageArea = new MessageArea();
 
@@ -27,6 +27,7 @@ void setup(){
   if (IS_PJS)  settings();
 
   //size(screen.width, screen.height);
+  sidebarw=width/4;
 }
 
 void draw(){
@@ -50,9 +51,10 @@ void draw(){
       sendBackspace();
     }
   }else if(mousePressed){
-    
+
 
   }
+
 }
 
 float ease(float x, int tx, float e){
