@@ -10,6 +10,7 @@ void settings() {
 }
 
 String msg = "";
+int sidebarw = 400;
 
 MessageArea messageArea = new MessageArea();
 
@@ -31,10 +32,10 @@ void setup(){
 void draw(){
   background(255);
   fill(0);
-  messageArea.updatePosition(400,0,width-400,height);
+  messageArea.updatePosition(sidebarw,0,width-sidebarw,height);
   messageArea.render();
   fill(#428cf4);
-  rect(0,0,400,height);
+  rect(0,0,sidebarw,height);
 
   if(frameCount%60==0){
     sysprint(""+millis());
@@ -42,12 +43,15 @@ void draw(){
 
   fill(255);
   text(frameRate,20,20);
-  if(mousePressed&&mouseX<400){
+  if(mousePressed&&mouseX<sidebarw){
     if(mouseY>height/2){
       msg+=str(char(int(random(16,128))));
     }else{
       sendBackspace();
     }
+  }else if(mousePressed){
+    
+
   }
 }
 
@@ -239,6 +243,16 @@ interface externals {
 }
 
 
+void mousePressed(){
+  if(mouseX>sidebarw){
+    sendEnter();
+  }
+}
+
+void sendEnter(){
+  bprint(msg,1);
+  msg="";
+}
 void sendBackspace(){
 
   msg=msg.substring(0,msg.length()-1);
